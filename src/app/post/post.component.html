@@ -1,5 +1,5 @@
 <div class="card mb-3" *ngFor="let p of post">
-    <img class="card-img-top" width="894" height="180" src="https://assets.toptal.io/images?url=https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/1096616/retina_500x200_cover-top-18-most-common-angularjs-developer-mistakes-41f9ad303a51db70e4a5204e101e7414.png" alt="Card image cap">
+    <img class="card-img-top" width="894" height="180" [routerLink]="['post-details',p.id]" src="https://assets.toptal.io/images?url=https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/1096616/retina_500x200_cover-top-18-most-common-angularjs-developer-mistakes-41f9ad303a51db70e4a5204e101e7414.png" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{p?.title}}</h5>
       <p class="card-text">{{p?.body}}</p>
