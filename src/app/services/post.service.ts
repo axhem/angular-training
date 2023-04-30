@@ -10,8 +10,8 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
-  getPosts():Observable<any> {
-    return this.http.get('https://jsonplaceholder.typicode.com/posts');
+  getPosts():Observable<Post[]> {
+    return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
   }
 
 }

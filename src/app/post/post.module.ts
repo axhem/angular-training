@@ -5,11 +5,13 @@ import { PostRoutingModule } from './post-routing.module';
 import { PostComponent } from './post.component';
 import { PostService } from '../services/post.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 
 @NgModule({
   declarations: [
-    PostComponent
+    PostComponent,
+    PostDetailsComponent
   ],
   imports: [
     CommonModule,
