@@ -13,6 +13,10 @@ const routes: Routes = [
     path: 'about',
     loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
   },
+    {//lazy loading
+      path: '',
+      loadChildren: () => import('./post/post.module').then(m => m.PostModule)
+    },
   {
     path:'registration', component: RegistrationComponent
   }
