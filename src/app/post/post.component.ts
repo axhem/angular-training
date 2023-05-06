@@ -10,11 +10,13 @@ import { PostService } from '../services/post.service';
 export class PostComponent implements OnInit {
 
   post: Post[] | undefined;
+  emri!: string;
 
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
     this.getPostComponent();
+    this.emri = this.postService.getName();
   }
 
   getPostComponent(): void {
@@ -23,5 +25,7 @@ export class PostComponent implements OnInit {
       console.log(this.post)
     })
   }
+
+
 
 }

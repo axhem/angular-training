@@ -2,7 +2,8 @@
     <blockquote class="blockquote">
       <p>{{comment?.name}}.</p>
     </blockquote>
-    <figcaption class="blockquote-footer" (click)="clickedComment(comment?.email)">
-      {{comment?.body}} &nbsp; <cite title="Source Title"> {{comment?.email}}</cite>
+    <figcaption class="blockquote-footer">
+      {{comment?.body}} &nbsp; <cite title="Source Title"> {{comment?.email}}
+         <button class="btn btn-primary" (click)="clickedComment(comment?.email)">shfaq email tek prindi</button></cite>
     </figcaption>
 </figure>

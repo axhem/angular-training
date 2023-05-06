@@ -2,7 +2,33 @@
     <div class="col-md-6 px-0">
       <h1 class="display-4 font-italic">{{postDetails?.title}}</h1>
       <p class="lead my-3">{{postDetails?.body}}</p>
+      <p class="lead my-3">{{postDetails?.userId}}</p>
+      <p class="lead my-3">{{postDetails?.id}}</p>
       <p class="lead mb-0"><a href="#" class="text-white font-weight-bold" *ngIf="emailFromChild">Email i klikuar nga lista e commenteve eshte: <b>{{emailFromChild}}</b></a></p>
     </div>
   </div>
-  <app-comments [commentList]="comments" (selectedComment)="shfaqEmailin($event)"></app-comments>
+  <hr>
+  <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <p>{{ angular | upperLower:'upperCase' }}</p>
+      <p>{{ angular | appendWordPipe:'Learn' | upperLower:'upperCase' }}</p>
+      <p>{{ today | date:'fullDate' }}</p>
+      <p>{{ 5000 | currency:'ALL' }}</p>
+      <p class="lead my-3">{{postDetails | json}}</p>
+      <input type="text" name="" id="">
+      <!-- <p ngClass="red blue">Two CSS classes added statically</p> -->
+      <p [ngClass]="['green','yellow']">Two CSS classes added statically</p>
+
+      <p [ngClass]="{'red' : message.length > 50}" >{{message}}</p>
+      <p [ngClass]="message.length > 50? 'red': ''">{{message}}</p>
+
+      <p [ngClass]="message.length > 50? 'red': 'blue'"></p>
+
+      <p *ngIf="message.length > 50">Ng If</p>
+    </div>
+  </div>
+
+  <div *ngIf="postDetails">
+    Komponenti u shfaq me sukses
+  </div>
+  <app-comments [commentList]="comments" [emriasdfasdf]="emri"  (selectedComment)="shfaqEmailin($event)"></app-comments>

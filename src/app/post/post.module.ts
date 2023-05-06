@@ -7,13 +7,21 @@ import { PostService } from '../services/post.service';
 import { HttpClientModule } from '@angular/common/http';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { CommentsComponent } from './comments/comments.component';
+import { AppendWordPipe } from '../append-word-pipe.pipe';
+import { UpperLowerPipe } from './upper-lower.pipe';
+import { CurrencyPipe } from './currency.pipe';
+import { DirectivesComponent } from './directives/directives.component';
 
 
 @NgModule({
   declarations: [
     PostComponent,
     PostDetailsComponent,
-    CommentsComponent
+    CommentsComponent,
+    AppendWordPipe,
+    UpperLowerPipe,
+    CurrencyPipe,
+    DirectivesComponent
   ],
   imports: [
     CommonModule,

@@ -9,17 +9,22 @@ import { Comments } from '../model/comment';
 })
 export class PostService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   getPosts():Observable<Post[]> {
-    return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
+    return this.httpClient.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
   }
 
   getPostByPostId(postId:number|undefined):Observable<Post> {
-    return this.http.get<Post>('https://jsonplaceholder.typicode.com/posts/'+postId);
+    return this.httpClient.get<Post>('https://jsonplaceholder.typicode.com/posts/'+postId);
   }
 
   getCommentsByPostId(postId:number|undefined):Observable<Comments[]>{
-    return this.http.get<Comments[]>('https://jsonplaceholder.typicode.com/posts/'+postId+'/comments');
+    return this.httpClient.get<Comments[]>('https://jsonplaceholder.typicode.com/posts/'+postId+'/comments');
   }
+
+  getName(){
+    return 'My name is JOhn Doe';
+  }
+
 }
