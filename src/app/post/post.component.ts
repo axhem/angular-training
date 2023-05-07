@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Post } from '../model/post';
 import { PostService } from '../services/post.service';
 import swal from 'sweetalert2';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-post',
@@ -9,11 +10,14 @@ import swal from 'sweetalert2';
   styleUrls: ['./post.component.css'],
 })
 export class PostComponent implements OnInit {
-
+	closeResult = '';
   posts: Post[] | undefined;
   emri!: string;
 
-  constructor(private postService: PostService) { }
+  constructor(
+    private postService: PostService,
+    private modalService: NgbModal
+    ) { }
 
   ngOnInit(): void {
     this.getPostComponent();
@@ -30,8 +34,32 @@ export class PostComponent implements OnInit {
 
 
   fshiPostimet(i:number,id:number):void {
-    this.posts?.splice(i,1);
-    swal.fire('Thank you...', 'You deleted succesfully!', 'success')
+    this.postService.deletePostById(id).subscribe(rezulati => {
+      this.posts?.splice(i,1);
+      console.log(rezulati);
+      swal.fire('Thank you...', 'You deleted succesfully!', 'success')
+    })
   }
 
+
+  open(content:any) {
+		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+			(result) => {
+				this.closeResult = `Closed with: ${result}`;
+			},
+			(reason) => {
+				this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+			},
+		);
+	}
+
+  private getDismissReason(reason: any): string {
+		if (reason === ModalDismissReasons.ESC) {
+			return 'by pressing ESC';
+		} else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+			return 'by clicking on a backdrop';
+		} else {
+			return `with: ${reason}`;
+		}
+	}
 }

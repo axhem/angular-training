@@ -23,6 +23,10 @@ export class PostService {
     return this.httpClient.get<Comments[]>('https://jsonplaceholder.typicode.com/posts/'+postId+'/comments');
   }
 
+  deletePostById(postId:number):Observable<any>{
+    return this.httpClient.delete<any>('https://jsonplaceholder.typicode.com/posts/'+ postId);
+  }
+
   getName(){
     return 'My name is JOhn Doe';
   }

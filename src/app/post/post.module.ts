@@ -12,6 +12,7 @@ import { UpperLowerPipe } from './upper-lower.pipe';
 import { CurrencyPipe } from './currency.pipe';
 import { DirectivesComponent } from './directives/directives.component';
 import { HighlightBackgroundDirective } from './highlight-background.directive';
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { HighlightBackgroundDirective } from './highlight-background.directive';
   imports: [
     CommonModule,
     PostRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbDatepickerModule
   ],
   providers:[PostService]
 })
