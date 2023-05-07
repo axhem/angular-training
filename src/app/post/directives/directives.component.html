@@ -1,5 +1,5 @@
-<p *ngIf="numri===5 else otherTemplate">
-    Numri eshte 5
+
+<p *ngIf="numri===5 then someComponentVariable else otherTemplate">
 </p>
   <ng-template #someComponentVariable>
     <p>bloku i pare</p>
@@ -23,13 +23,46 @@
   </ng-template>
 
 
+  <p [ngStyle]="{color:'red', 'font-size':'30px'}">Perdorimi i ngStyle</p>
 
-  <input type="text">
-  <input type="text">
-  <input type="text">
-  <input type="text">
-  <input type="text">
-  <input type="text">
-  <input type="text">
+  <p appHighlightBackground>
+    Highlight with basic directive <br>
+    <span>Ky eshte nje span</span> <br>
+    <i>Ky eshte nje font</i>
+  </p>
 
-  
+  <div appHighlightBackground *ngFor="let nota of notat">
+    <p>{{nota?.math}}</p>
+  </div>
+
+  <p *ngIf="numri !==5">
+    Jemi duke testuar ngIf ne Angular.
+    <span>asdfasdf</span>
+  </p>
+
+  <!-- <p *ngFor="let nota of notat">
+    {{nota}}
+  </p> -->
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nr</th>
+        <th scope="col">Math</th>
+        <th scope="col">Physics</th>
+        <th scope="col">Literature</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let nota of notat; index as i;">
+        <th scope="row">{{ i + 1}}</th>
+        <td>{{nota?.math}}</td>
+        <td>{{nota?.physics}}</td>
+        <td>{{nota?.literature}}</td>
+        <td>
+          <button (click)="fshiNoten(i, nota.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

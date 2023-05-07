@@ -11,6 +11,7 @@ import { AppendWordPipe } from '../append-word-pipe.pipe';
 import { UpperLowerPipe } from './upper-lower.pipe';
 import { CurrencyPipe } from './currency.pipe';
 import { DirectivesComponent } from './directives/directives.component';
+import { HighlightBackgroundDirective } from './highlight-background.directive';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { DirectivesComponent } from './directives/directives.component';
     AppendWordPipe,
     UpperLowerPipe,
     CurrencyPipe,
-    DirectivesComponent
+    DirectivesComponent,
+    HighlightBackgroundDirective
   ],
   imports: [
     CommonModule,

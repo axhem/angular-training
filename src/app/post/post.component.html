@@ -1,11 +1,36 @@
-<h1>{{emri}}</h1>
+<!-- <h1>{{emri}}</h1> -->
 <!-- <button type="button" (click)="getPostComponent()" class="btn btn-primary">shfaq te gjitha postimet</button> -->
 
-<div class="card mb-3" *ngFor="let p of post">
+<!-- <div class="card mb-3" *ngFor="let p of post">
     <img class="card-img-top" width="894" height="180" [routerLink]="['post-details',p.id]" src="https://assets.toptal.io/images?url=https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/1096616/retina_500x200_cover-top-18-most-common-angularjs-developer-mistakes-41f9ad303a51db70e4a5204e101e7414.png" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{p?.title}}</h5>
       <p class="card-text">{{p?.body}}</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
-  </div>
+  </div> -->
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nr</th>
+        <th scope="col">Title</th>
+        <th scope="col">Body</th>
+        <th scope="col">Image</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of posts; index as i;">
+        <th scope="row">{{ i + 1}}</th>
+        <td>{{post?.title}}</td>
+        <td>{{post?.body}}</td>
+        <td>
+          <img class="card-img-top" width="30px" height="30px" [routerLink]="['post-details',post.id]" src="https://assets.toptal.io/images?url=https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/1096616/retina_500x200_cover-top-18-most-common-angularjs-developer-mistakes-41f9ad303a51db70e4a5204e101e7414.png" alt="Card image cap">
+        </td>
+        <td>
+          <button (click)="fshiPostimet(i, post.id)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
