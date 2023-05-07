@@ -13,6 +13,7 @@ import { CurrencyPipe } from './currency.pipe';
 import { DirectivesComponent } from './directives/directives.component';
 import { HighlightBackgroundDirective } from './highlight-background.directive';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     PostRoutingModule,
     HttpClientModule,
-    NgbDatepickerModule
+    NgbDatepickerModule,
+    FormsModule
   ],
   providers:[PostService]
 })

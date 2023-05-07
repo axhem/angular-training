@@ -9,45 +9,64 @@
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div> -->
-  <ng-template #content let-modal>
+<ng-template #content let-modal style="width:500px">
+  <form #postForm="ngForm" (ngSubmit)="saveForm(postForm)">
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <h4 class="modal-title" id="modal-basic-title">Add Post</h4>
       <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
-      <form>
-        <div class="mb-3">
-          <label for="dateOfBirth">Date of birth</label>
+      <div class="form-group">
+        <label for="userId">User Id</label>
+        <input type="number" name="userId" required="true" ngModel class="form-control" id="userId" aria-describedby="userId"
+          placeholder="Vendosni User Id">
+          <p class="text-danger" *ngIf="submitted && postForm.controls['userId'].value ===''">User Id is required </p>
         </div>
-      </form>
+      <div class="form-group">
+        <label for="title">title</label>
+        <input type="text" name="title" required ngModel class="form-control" id="title" aria-describedby="title"
+          placeholder="Vendosni nje titull" >
+          <p class="text-danger" *ngIf="submitted && postForm.controls['title'].value ===''">Title is required </p>
+
+      </div>
+      <div class="form-group">
+        <label for="content">Content</label>
+          <textarea name="body" required placeholder="Vendosni nje content" id="content"  class="form-control" ngModel cols="30" rows="10"></textarea>
+          <p class="text-danger" *ngIf="submitted && postForm.controls['body'].value ===''">Body is required </p>
+
+      </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      <button type="submit" [disabled]="!postForm.valid" class="btn btn-outline-success">Save</button>
+      <button class="btn btn-outline-primary" (click)="modal.dismiss('Cross click')">Cancel</button>
     </div>
-  </ng-template>
-  
-  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Nr</th>
-        <th scope="col">Title</th>
-        <th scope="col">Body</th>
-        <th scope="col">Image</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let post of posts; index as i;">
-        <th scope="row">{{ i + 1}}</th>
-        <td>{{post?.title}}</td>
-        <td>{{post?.body}}</td>
-        <td>
-          <img class="card-img-top" width="30px" height="30px" [routerLink]="['post-details',post.id]" src="https://assets.toptal.io/images?url=https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/1096616/retina_500x200_cover-top-18-most-common-angularjs-developer-mistakes-41f9ad303a51db70e4a5204e101e7414.png" alt="Card image cap">
-        </td>
-        <td>
-          <button (click)="fshiPostimet(i, post.id)" class="btn btn-danger">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  </form>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add Post</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nr</th>
+      <th scope="col">Title</th>
+      <th scope="col">Body</th>
+      <th scope="col">Image</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let post of posts; index as i;">
+      <th scope="row">{{ i + 1}}</th>
+      <td>{{post?.title}}</td>
+      <td>{{post?.body}}</td>
+      <td>
+        <img class="card-img-top" width="30px" height="30px" [routerLink]="['post-details',post.id]"
+          src="https://assets.toptal.io/images?url=https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/1096616/retina_500x200_cover-top-18-most-common-angularjs-developer-mistakes-41f9ad303a51db70e4a5204e101e7414.png"
+          alt="Card image cap">
+      </td>
+      <td>
+        <button (click)="fshiPostimet(i, post.id)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

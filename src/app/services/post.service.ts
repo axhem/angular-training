@@ -27,6 +27,10 @@ export class PostService {
     return this.httpClient.delete<any>('https://jsonplaceholder.typicode.com/posts/'+ postId);
   }
 
+  addPost(post:Post):Observable<Post> {
+    return this.httpClient.post<Post>('https://jsonplaceholder.typicode.com/posts', post);
+  }
+
   getName(){
     return 'My name is JOhn Doe';
   }

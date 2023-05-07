@@ -3,6 +3,7 @@ import { Post } from '../model/post';
 import { PostService } from '../services/post.service';
 import swal from 'sweetalert2';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-post',
@@ -13,7 +14,8 @@ export class PostComponent implements OnInit {
 	closeResult = '';
   posts: Post[] | undefined;
   emri!: string;
-
+  newPost!: Post;
+  submitted: boolean = false;
   constructor(
     private postService: PostService,
     private modalService: NgbModal
@@ -62,4 +64,25 @@ export class PostComponent implements OnInit {
 			return `with: ${reason}`;
 		}
 	}
+
+  saveForm(postForm: NgForm): void {
+    this.submitted = true;
+    if(!postForm.valid)
+      return;
+    this.newPost = postForm.value;
+    this.postService.addPost(this.newPost).subscribe(rezultati => {
+      this.posts?.push(rezultati);
+      this.modalService.dismissAll();
+      postForm.reset();
+      // swal.fire('Congrats...', 'Post succesfully added!', 'success');
+      swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Post succesfully added!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      
+    })
+  }
 }
