@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UsersComponent } from './users/users.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { AlbumModule } from './album/album.module';
 
 const routes: Routes = [
   //eager loading
@@ -19,6 +20,10 @@ const routes: Routes = [
     },
   {
     path:'registration', component: RegistrationComponent
+  },
+  {
+    path:'albums',
+    loadChildren: () => import('./album/album.module').then(m=>m.AlbumModule)
   }
 ];
 

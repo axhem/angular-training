@@ -31,6 +31,10 @@ export class PostService {
     return this.httpClient.post<Post>('https://jsonplaceholder.typicode.com/posts', post);
   }
 
+  updatePost(post: Post,postId:number): Observable<Post>{
+    return this.httpClient.put<Post>('https://jsonplaceholder.typicode.com/posts/'+ postId, post);
+  }
+
   getName(){
     return 'My name is JOhn Doe';
   }

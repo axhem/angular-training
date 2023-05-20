@@ -26,6 +26,11 @@ export class PostComponent implements OnInit {
     this.emri = this.postService.getName();
   }
 
+  editoPostimet(postId:number){
+    console.log(postId);
+    // this.router.navigate(['post-edit', postId])
+  }
+
   
 
   getPostComponent(): void {

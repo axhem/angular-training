@@ -1,0 +1,38 @@
+<div class="content-justify-center">
+    
+    <form [formGroup]="editPostFormGroup" (ngSubmit)="updatePost()" style="width:30%">
+        
+        <div class="form-group">
+            <label for="userid">User id</label>
+            <input type="number" formControlName="profileId" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" formControlName="titulli" class="form-control" >
+        </div>
+        <div class="form-group">
+            <label for="body">Content</label>
+            <input type="text" formControlName="content" class="form-control" >
+            <span *ngIf="editPostFormGroup.controls['content'].errors?.['required']">
+                This field is required
+            </span>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div formArrayName="cities">
+                    <div *ngFor="let city of cities.controls; index as i">
+                      <input [formControlName]="i" class="form-control" placeholder="City">
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button (click)="addCity()" class="btn btn-primary">Add City</button>
+                <button (click)="setPreset()" class="btn btn-primary">&nbsp; Set preset</button>
+            </div>
+          </div>
+        <div class="form-group mt-3">
+            <button type="submit" class="btn btn-primary">Update Post</button>
+        </div>
+    </form>
+</div>

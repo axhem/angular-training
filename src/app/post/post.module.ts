@@ -13,7 +13,8 @@ import { CurrencyPipe } from './currency.pipe';
 import { DirectivesComponent } from './directives/directives.component';
 import { HighlightBackgroundDirective } from './highlight-background.directive';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PostEditComponent } from './post-edit/post-edit.component';
 
 
 @NgModule({
@@ -25,14 +26,17 @@ import { FormsModule } from '@angular/forms';
     UpperLowerPipe,
     CurrencyPipe,
     DirectivesComponent,
-    HighlightBackgroundDirective
+    HighlightBackgroundDirective,
+    PostEditComponent
   ],
   imports: [
     CommonModule,
     PostRoutingModule,
     HttpClientModule,
     NgbDatepickerModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
+
   ],
   providers:[PostService]
 })
