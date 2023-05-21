@@ -16,6 +16,7 @@ export class PostComponent implements OnInit {
   emri!: string;
   newPost!: Post;
   submitted: boolean = false;
+  shuma: number = 0;
   constructor(
     private postService: PostService,
     private modalService: NgbModal
@@ -34,19 +35,41 @@ export class PostComponent implements OnInit {
   
 
   getPostComponent(): void {
-    this.postService.getPosts().subscribe(result => {
-      this.posts = result;
+    this.postService.getPosts().subscribe({
+      next: (result)=>{
+        console.log('rezultati erdhi');
+        this.posts = result;
+      },
+      error: (error)=>{
+        debugger;
+        swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: error.message,
+          showConfirmButton: false,
+          timer: 3500
+        })
+      },
+      complete: ()=> console.log('complete')
     })
+
+    this.shuma = 5*3434;
+    console.log(this.shuma);
   }
 
 
   fshiPostimet(i:number,id:number):void {
-    this.postService.deletePostById(id).subscribe(rezulati => {
-      this.posts?.splice(i,1);
-      console.log(rezulati);
-      swal.fire('Thank you...', 'You deleted succesfully!', 'success')
+    this.postService.deletePostById(id).subscribe({
+      next: (result) => {
+        console.log(result)
+      },
+      error: (e) => {
+        console.log(e)
+      },
+      complete: () => console.info('complete')
     })
   }
+
 
 
   open(content:any) {
@@ -91,3 +114,7 @@ export class PostComponent implements OnInit {
     })
   }
 }
+function next(value: any): void {
+  throw new Error('Function not implemented.');
+}
+

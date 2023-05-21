@@ -15,6 +15,9 @@ import { HighlightBackgroundDirective } from './highlight-background.directive';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostEditComponent } from './post-edit/post-edit.component';
+import { ObserverableComponent } from '../rxjs/observerable/observerable.component';
+import { Comp2Component } from '../rxjs/comp2/comp2.component';
+import { Comp1Component } from '../rxjs/comp1/comp1.component';
 
 
 @NgModule({
@@ -27,7 +30,10 @@ import { PostEditComponent } from './post-edit/post-edit.component';
     CurrencyPipe,
     DirectivesComponent,
     HighlightBackgroundDirective,
-    PostEditComponent
+    PostEditComponent,
+    ObserverableComponent,
+    Comp2Component,
+    Comp1Component
   ],
   imports: [
     CommonModule,
